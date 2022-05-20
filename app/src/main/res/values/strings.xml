@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Practica 2</string>
+    <string name="nickname">Write here your nickname</string>
+    <string name="start">START!</string>
+</resources>

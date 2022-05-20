@@ -10,12 +10,14 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     TextView textView;
+    EditText editText;
+    TextView nicktext;
     int letterSize;
     String replace="";
     String paraula[];
     String ancerts [];
     String initial="";
-    EditText editText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +28,27 @@ public class GameActivity extends AppCompatActivity {
         editText = findViewById(R.id.lletra);
 
         String text = getIntent().getStringExtra("sendWord");
+        String nick = getIntent().getStringExtra("sendNickName");
         letterSize = text.length();
         paraula = new String[text.length()];
         ancerts = new String[text.length()];
         for (int i = 0; i< letterSize;i++) {
-            ancerts[i] = " _";
+            ancerts[i] = " _ ";
             paraula[i] = text.substring(i,i+1);
             System.out.println("la paraula es: "+paraula[i]);
-            initial = initial+" _";
+            initial = initial+" _ ";
 
         }
 
 
         textView.setText(initial);
 
+
     }
 
     public void searchChar(View view) {
         String letter = editText.getText().toString();
+        editText.setText("");
         if (letter == null || letter.equals("")) {
             //fer TOAST
             System.out.println("escriu alguna cosa");
@@ -58,22 +63,18 @@ public class GameActivity extends AppCompatActivity {
                 System.out.println("abans de comparar lletra es "+letter+ " caixa es: "+paraula[i]);
                 if (paraula[i].equals(letter)) {
                     ancerts[i] = letter;
-                    //textView.setText(ancerts.toString());
-                    i = letterSize;
 
-                    for (int r = 0; r < letterSize;r++) {
-                        String t = "";
-                        replace = replace + ancerts[r];
-
-                    }
-                    textView.setText(replace);
-                    replace = "";
                 }
 
                 else {
-                    //sonido de error
+                    //sonido de error TODO
                 }
             }
+            for (int r = 0; r < letterSize;r++) {
+                replace = replace + ancerts[r];
+            }
+            textView.setText(replace);
+            replace = "";
 
         }
 

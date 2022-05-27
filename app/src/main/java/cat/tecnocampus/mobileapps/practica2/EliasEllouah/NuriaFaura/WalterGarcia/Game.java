@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Player {
+public class Game {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
@@ -14,4 +14,5 @@ public class Player {
 
     @ColumnInfo(name = "points")
     public int points;
+
 }

@@ -6,17 +6,16 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Player.class}, version = 1, exportSchema = false)
+@Database(entities = {Game.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
-    public abstract PlayerDao playerDao();
+    public abstract GameDao GameDao();
 
     public static AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database-test")
-                    // .allowMainThreadQueries()
-                    .build();
+                         .build();
         }
         return INSTANCE;
     }

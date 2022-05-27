@@ -8,19 +8,19 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-public class PlayerViewModel extends AndroidViewModel {
+public class GameViewModel extends AndroidViewModel {
     //S'encarrega de fer la crida al ViewController i té les dades
 
     private DatabaseController repository; //Instancia al controller
-    private LiveData<List<Player>> allPlayers; //LiveData
+    private LiveData<List<Game>> allGames; //LiveData
 
-    public PlayerViewModel(@NonNull Application application) {
+    public GameViewModel(@NonNull Application application) {
         super(application);
         repository = new DatabaseController(application);
-        allPlayers = repository.fetchAll();//Agafem tot el que hi hagi a la taula de tasques
+        allGames = repository.fetchAll();//Agafem tot el que hi hagi a la taula de tasques
     }
 
-    LiveData<List<Player>> getAllPlayers() { return allPlayers;}//retornar totes les dades
+    LiveData<List<Game>> getAllGames() { return allGames;}//retornar totes les dades
 
     void insert(String task) {
         repository.setTodo(task);//crida al controller que farà l'insert

@@ -1,7 +1,5 @@
 package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia;
 
-import android.content.ContentValues;
-
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -11,16 +9,16 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface PlayerDao {
+public interface GameDao {
     //LiveData xq??
-    @Query("SELECT * FROM player")
-    LiveData<List<Player>> getAllPlayers();
+    @Query("SELECT * FROM Game")
+    LiveData<List<Game>> getAllGames();
 
     @Insert
-    void insertPlayer(Player player);
+    void insertGame(Game game);
 
     //https://academiaandroid.com/sqlite-en-app-android-actualizar-eliminar-y-consultar-datos/
     @Update
-    void updatePoints(Player updatedPlayer);
+    void updatePoints(Game updatedGame);
 
 }

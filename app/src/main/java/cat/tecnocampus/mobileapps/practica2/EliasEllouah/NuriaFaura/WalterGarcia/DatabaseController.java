@@ -9,22 +9,22 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class DatabaseController {
-    private PlayerDao playerDao;
-    private LiveData<List<Player>> allPlayers;
+    private GameDao gameDao;
+    private LiveData<List<Game>> allGames;
 
     public DatabaseController(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
-        playerDao = db.playerDao();
-        allPlayers = playerDao.getAllPlayers();
+        gameDao = db.GameDao();
+        allGames = gameDao.getAllGames();
     }
 
-    public LiveData<List<Player>> fetchAll() {
-        return allPlayers;
+    public LiveData<List<Game>> fetchAll() {
+        return allGames;
     }
 
     public void setTodo(String task) {
-        Player current = new Player();
-        new insertAsyncTask(playerDao).execute(current);
+        Game current = new Game();
+        new insertAsyncTask(gameDao).execute(current);
     }
 
     /*private static class insertAsyncTask extends AsyncTask<Player, Void, Void> {
@@ -42,22 +42,22 @@ public class DatabaseController {
     }*/
 
     private static class insertAsyncTask {
-        private PlayerDao asyncDao;
+        private GameDao asyncDao;
         private Executor executor = Executors.newSingleThreadExecutor();
 
-        insertAsyncTask(PlayerDao dao) {
+        insertAsyncTask(GameDao dao) {
             asyncDao = dao;
         }
 
-        public void execute(Player player) {
-            this.doInBackground(player);
+        public void execute(Game game) {
+            this.doInBackground(game);
         }
 
-        private void doInBackground(final Player player) {
+        private void doInBackground(final Game game) {
             this.executor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    asyncDao.insertPlayer(player);
+                    asyncDao.insertGame(game);
                 }
             });
         }

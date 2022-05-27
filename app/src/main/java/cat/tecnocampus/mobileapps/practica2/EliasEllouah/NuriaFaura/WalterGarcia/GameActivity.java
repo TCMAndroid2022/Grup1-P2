@@ -1,12 +1,17 @@
 package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
     TextView textView;
@@ -17,6 +22,10 @@ public class GameActivity extends AppCompatActivity {
     String paraula[];
     String ancerts [];
     String initial="";
+    int puntuacio = 0;
+
+    GameViewModel viewModel;
+    GameAdapter gameAdapter;
 
 
     @Override
@@ -28,10 +37,13 @@ public class GameActivity extends AppCompatActivity {
         editText = findViewById(R.id.lletra);
         nicktext = findViewById(R.id.textNick);
 
+
         String text = getIntent().getStringExtra("sendWord");
         String nick = getIntent().getStringExtra("sendNickName");
 
         nicktext.setText(nick);
+
+
 
         letterSize = text.length();
         paraula = new String[text.length()];
@@ -46,6 +58,27 @@ public class GameActivity extends AppCompatActivity {
 
 
         textView.setText(initial);
+
+
+
+        //crea instancia del ViewModel per accedir a les dades del llistat.
+        //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
+        viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        //Observe es una funció de LiveData, que ens permet detectar quan
+        // les dades s'han modificat.
+        viewModel.getAllGames().observe(this, new Observer<List<Game>>() {
+            @Override
+            public void onChanged(List<Game> games) {
+                //onChanged s'executa quan el llistat es modifica a la bbdd.
+                //Si afegiu una tasca, veureu que s'executa aquest codi per
+                //actualitzar el llistat (adapter)
+                gameAdapter.setGames(games);
+            }
+        });
+
+
+        gameAdapter = new GameAdapter();
+
 
 
     }
@@ -81,6 +114,32 @@ public class GameActivity extends AppCompatActivity {
             replace = "";
 
         }
+
+    }
+
+    public void finishGameClicked (View view){
+
+        //CALCULEM PUNTS
+        int enteredLetters = 0;
+        for(int i = 0 ; i < this.ancerts.length; i++){
+            if (!this.ancerts[i].equals(" - "))
+                enteredLetters++;
+        }
+
+        this.puntuacio = ((this.letterSize - enteredLetters)/this.letterSize)*10;
+
+        //OBJECTE GAME
+        Game newGame = new Game();
+        newGame.points = puntuacio;
+        newGame.nickname=nicktext.getText().toString();
+
+        //INSERIM A LA BBDD
+        viewModel.insert(newGame);
+
+
+        Log.v("POTATO",viewModel.getAllGames().toString() );
+
+
 
     }
 }

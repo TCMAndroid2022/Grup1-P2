@@ -16,9 +16,4 @@ public interface GameDao {
 
     @Insert
     void insertGame(Game game);
-
-    //https://academiaandroid.com/sqlite-en-app-android-actualizar-eliminar-y-consultar-datos/
-    @Update
-    void updatePoints(Game updatedGame);
-
 }

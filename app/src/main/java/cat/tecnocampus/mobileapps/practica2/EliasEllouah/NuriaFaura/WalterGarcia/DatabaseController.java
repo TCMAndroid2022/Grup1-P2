@@ -22,9 +22,8 @@ public class DatabaseController {
         return allGames;
     }
 
-    public void setTodo(String task) {
-        Game current = new Game();
-        new insertAsyncTask(gameDao).execute(current);
+    public void setGame(Game game) {
+        new insertAsyncTask(gameDao).execute(game);
     }
 
     /*private static class insertAsyncTask extends AsyncTask<Player, Void, Void> {

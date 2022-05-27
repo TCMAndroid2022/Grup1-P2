@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Game {
+
     @PrimaryKey(autoGenerate = true)
     public int id;
 

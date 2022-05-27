@@ -22,8 +22,8 @@ public class GameViewModel extends AndroidViewModel {
 
     LiveData<List<Game>> getAllGames() { return allGames;}//retornar totes les dades
 
-    void insert(String task) {
-        repository.setTodo(task);//crida al controller que farà l'insert
+    void insert(Game game) {
+        repository.setGame(game);//crida al controller que farà l'insert
     }
 
 

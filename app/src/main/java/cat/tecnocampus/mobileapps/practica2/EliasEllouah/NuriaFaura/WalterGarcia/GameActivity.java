@@ -26,9 +26,13 @@ public class GameActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.randomWord);
         editText = findViewById(R.id.lletra);
+        nicktext = findViewById(R.id.textNick);
 
         String text = getIntent().getStringExtra("sendWord");
         String nick = getIntent().getStringExtra("sendNickName");
+
+        nicktext.setText(nick);
+
         letterSize = text.length();
         paraula = new String[text.length()];
         ancerts = new String[text.length()];

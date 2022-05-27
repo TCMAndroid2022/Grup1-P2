@@ -10,5 +10,18 @@ public class RankingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
+
+        //per mostrar fletxa enrere a la part lila
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("ALOHA");
+
+
+    }
+
+    //perquè la fletxa tiri enrere
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

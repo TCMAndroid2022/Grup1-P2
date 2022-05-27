@@ -18,7 +18,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     public GameAdapter() {
     }
 
-    public void setTodos(List<Game> data) {
+    public void setGames(List<Game> data) {
         this.data = data;
         notifyDataSetChanged();
     }

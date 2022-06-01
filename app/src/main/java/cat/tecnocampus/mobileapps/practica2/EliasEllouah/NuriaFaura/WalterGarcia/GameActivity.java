@@ -1,11 +1,15 @@
 package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     String initial="";
     int puntuacio = 0;
 
+
     GameViewModel viewModel;
     GameAdapter gameAdapter;
 
@@ -32,6 +37,8 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+
 
         textView = findViewById(R.id.randomWord);
         editText = findViewById(R.id.lletra);
@@ -76,12 +83,30 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-
+        createDummyDatabase();
         gameAdapter = new GameAdapter();
 
 
 
     }
+
+    private void createDummyDatabase(){
+        Game newGame = new Game();
+        newGame.points = 10;
+        newGame.nickname="Pedro";
+        viewModel.insert(newGame);
+
+        Game newGame2 = new Game();
+        newGame.points = 100;
+        newGame.nickname="Walte";
+        viewModel.insert(newGame2);
+
+        Game newGame3 = new Game();
+        newGame.points = 30;
+        newGame.nickname="ASDFA";
+        viewModel.insert(newGame3);
+    }
+
 
     public void searchChar(View view) {
         String letter = editText.getText().toString();
@@ -140,6 +165,21 @@ public class GameActivity extends AppCompatActivity {
         Log.v("POTATO",viewModel.getAllGames().toString() );
 
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_ranking, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        if(item.getItemId()== R.id.menu_agregar){
+            Intent intent = new Intent(this, cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia.RankingActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

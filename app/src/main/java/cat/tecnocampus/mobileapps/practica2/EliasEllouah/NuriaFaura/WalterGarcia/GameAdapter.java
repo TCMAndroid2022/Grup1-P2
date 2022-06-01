@@ -26,7 +26,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_ranking, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ranking, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -35,6 +35,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Game currentGame = data.get(position);
         holder.id.setText(currentGame.id + "");
+        holder.nickname.setText(currentGame.nickname + "");
+        holder.points.setText(currentGame.points + "");
     }
 
     @Override
@@ -45,11 +47,15 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView id;
-        public TextView task;
+        public TextView nickname;
+        public TextView points;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             id = itemView.findViewById(R.id.player_id);
+            nickname = itemView.findViewById(R.id.player_nick);
+            points = itemView.findViewById(R.id.playerPoints);
+
         }
     }
 }

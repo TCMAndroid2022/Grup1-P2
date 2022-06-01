@@ -91,20 +91,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void createDummyDatabase(){
-        Game newGame = new Game();
-        newGame.points = 10;
-        newGame.nickname="Pedro";
+        Game newGame = new Game("Pedro",10);
         viewModel.insert(newGame);
 
-        Game newGame2 = new Game();
-        newGame.points = 100;
-        newGame.nickname="Walte";
+        Game newGame2 = new Game("AAA",100);
         viewModel.insert(newGame2);
 
-        Game newGame3 = new Game();
-        newGame.points = 30;
-        newGame.nickname="ASDFA";
-        viewModel.insert(newGame3);
+        Game newGame3 = new Game("AETSRE",30);
+        viewModel.insert(newGame);
     }
 
 
@@ -153,10 +147,14 @@ public class GameActivity extends AppCompatActivity {
 
         this.puntuacio = ((this.letterSize - enteredLetters)/this.letterSize)*10;
 
+
+        int points = puntuacio;
+        String nick = nicktext.getText().toString();
+
+
         //OBJECTE GAME
-        Game newGame = new Game();
-        newGame.points = puntuacio;
-        newGame.nickname=nicktext.getText().toString();
+        Game newGame = new Game(nick, points);
+
 
         //INSERIM A LA BBDD
         viewModel.insert(newGame);

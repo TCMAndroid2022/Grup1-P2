@@ -3,6 +3,7 @@ package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarci
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class RankingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_ranking);
+        setContentView(R.layout.activity_ranking);
 
         //per mostrar fletxa enrere a la part lila
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -36,6 +37,10 @@ public class RankingActivity extends AppCompatActivity {
         playerPoints = findViewById(R.id.playerPoints);
         playerGames = findViewById(R.id.playerPoints);
 
+        recyclerView = findViewById(R.id.ranking_view);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
 
         //crea instancia del ViewModel per accedir a les dades del llistat.
@@ -55,10 +60,6 @@ public class RankingActivity extends AppCompatActivity {
 
         gameAdapter = new GameAdapter();
         recyclerView.setAdapter(gameAdapter);
-
-
-
-
     }
 
     //perquè la fletxa tiri enrere

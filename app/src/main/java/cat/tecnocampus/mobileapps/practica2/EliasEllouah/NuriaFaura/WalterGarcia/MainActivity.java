@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void startGame(View view) {
 
-
         random = random.replaceAll("\\W+","");
         String nickname = editText.getText().toString();
         Intent intent = new Intent(getApplicationContext(),GameActivity.class);

@@ -71,14 +71,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startGame(View view) {
-
         random = random.replaceAll("\\W+","");
         String nickname = editText.getText().toString();
-        Intent intent = new Intent(getApplicationContext(),GameActivity.class);
-        intent.putExtra("sendNickName",nickname);
-        System.out.println("Paraula que volem enviar: "+random);
-        intent.putExtra("sendWord",random);
-        startActivity(intent);
+
+        if (nickname.length()>=1){
+            Intent intent = new Intent(getApplicationContext(),GameActivity.class);
+            intent.putExtra("sendNickName",nickname);
+            System.out.println("Paraula que volem enviar: "+random);
+            intent.putExtra("sendWord",random);
+            startActivity(intent);
+        }
 
     }
 

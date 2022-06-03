@@ -1,21 +1,19 @@
 package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
+import java.util.Locale;
 
 public class GameActivity extends AppCompatActivity {
     TextView textView;
@@ -24,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
     int letterSize;
     String replace="";
     String paraula[];
-    String ancerts [];
+    String encerts[];
     String initial="";
     int puntuacio = 0;
 
@@ -54,9 +52,9 @@ public class GameActivity extends AppCompatActivity {
 
         letterSize = text.length();
         paraula = new String[text.length()];
-        ancerts = new String[text.length()];
+        encerts = new String[text.length()];
         for (int i = 0; i< letterSize;i++) {
-            ancerts[i] = " _ ";
+            encerts[i] = " _ ";
             paraula[i] = text.substring(i,i+1);
             System.out.println("la paraula es: "+paraula[i]);
             initial = initial+" _ ";
@@ -85,9 +83,6 @@ public class GameActivity extends AppCompatActivity {
 
         createDummyDatabase();
         gameAdapter = new GameAdapter();
-
-
-
     }
 
     private void createDummyDatabase(){
@@ -107,7 +102,7 @@ public class GameActivity extends AppCompatActivity {
         editText.setText("");
         if (letter == null || letter.equals("")) {
             //fer TOAST
-            System.out.println("escriu alguna cosa");
+            System.out.println("Letter must have a value!");
         }
         else {
 
@@ -117,9 +112,8 @@ public class GameActivity extends AppCompatActivity {
 
             for (int i = 0; i<letterSize;i++) {
                 System.out.println("abans de comparar lletra es "+letter+ " caixa es: "+paraula[i]);
-                if (paraula[i].equals(letter)) {
-                    ancerts[i] = letter;
-
+                if (paraula[i].equalsIgnoreCase(letter)) {
+                    encerts[i] = letter;
                 }
 
                 else {
@@ -127,9 +121,9 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
             for (int r = 0; r < letterSize;r++) {
-                replace = replace + ancerts[r];
+                replace = replace + encerts[r];
             }
-            textView.setText(replace);
+            textView.setText(replace.toUpperCase(Locale.ROOT));
             replace = "";
 
         }
@@ -140,8 +134,8 @@ public class GameActivity extends AppCompatActivity {
 
         //CALCULEM PUNTS
         int enteredLetters = 0;
-        for(int i = 0 ; i < this.ancerts.length; i++){
-            if (!this.ancerts[i].equals(" - "))
+        for(int i = 0; i < this.encerts.length; i++){
+            if (!this.encerts[i].equals(" - "))
                 enteredLetters++;
         }
 

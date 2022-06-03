@@ -10,4 +10,8 @@
     <string name="hintWord">Write the word!</string>
     <string name="finishGame">Finish game</string>
     <string name="solveWord">Solve word</string>
+    <string name="ranking_id">ID</string>
+    <string name="ranking_nick">NICKNAME</string>
+    <string name="ranking_points">POINTS</string>
+    <string name="ranking_game">GAME</string>
 </resources>

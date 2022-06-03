@@ -34,8 +34,8 @@ public class RankingActivity extends AppCompatActivity {
 
         playerId = findViewById(R.id.player_id);
         playerNick = findViewById(R.id.player_nick);
-        playerPoints = findViewById(R.id.playerPoints);
-        playerGames = findViewById(R.id.playerPoints);
+        playerPoints = findViewById(R.id.player_points);
+        playerGames = findViewById(R.id.ranking_game);
 
         recyclerView = findViewById(R.id.ranking_view);
 

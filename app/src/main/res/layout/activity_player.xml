@@ -7,36 +7,50 @@
     android:orientation="vertical"
     tools:context=".PlayerActivity">
 
-    <TextView
-        android:id="@+id/playerName"
+    <EditText
+        android:id="@+id/et_personNick_allInfo"
         android:layout_width="match_parent"
-        android:layout_height="99dp"
-        android:background="#2196F3"
+        android:layout_height="wrap_content"
+        android:background="@color/myBackground"
+        android:ems="10"
         android:gravity="center"
-        android:text="Player info."
-        android:textColor="#F4F4F4"
-        android:textSize="24sp" />
+        android:inputType="textPersonName"
+        android:padding="30dp"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="34sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="89dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/numberOfGames"
+        <TextView
+            android:id="@+id/info_player_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:gravity="center"
+            android:text="@string/ranking_id"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/playerPoints"
+        <TextView
+            android:id="@+id/info_game_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:gravity="center"
+            android:text="@string/ranking_points"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
 </LinearLayout>

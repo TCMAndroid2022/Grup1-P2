@@ -7,8 +7,8 @@
     android:orientation="vertical"
     tools:context=".PlayerActivity">
 
-    <EditText
-        android:id="@+id/et_personNick_allInfo"
+    <TextView
+        android:id="@+id/tv_personNick_alInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/myBackground"

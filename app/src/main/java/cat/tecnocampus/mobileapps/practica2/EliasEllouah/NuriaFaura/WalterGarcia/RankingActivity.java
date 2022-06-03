@@ -26,6 +26,7 @@ public class RankingActivity extends AppCompatActivity implements GameAdapter.On
 
     RecyclerView recyclerView;
 
+    ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,9 @@ public class RankingActivity extends AppCompatActivity implements GameAdapter.On
     @Override
     public void onItemClick (String nick){
         Intent intent = new Intent(this, cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia.PlayerActivity.class);
+        intent.putExtra("nick", nick);
         startActivity(intent);
+//        activityResultLauncher.launch(intent);
 
     }
 

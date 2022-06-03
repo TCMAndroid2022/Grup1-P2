@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface GameDao {
-    //LiveData xq??
+
     @Query("SELECT * FROM Game")
     LiveData<List<Game>> getAllGames();
 

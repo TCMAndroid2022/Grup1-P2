@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         String nickname = editText.getText().toString();
         Intent intent = new Intent(getApplicationContext(),GameActivity.class);
         intent.putExtra("sendNickName",nickname);
-        System.out.println("Palabra que queremos enviar: "+random);
+        System.out.println("Paraula que volem enviar: "+random);
         intent.putExtra("sendWord",random);
         startActivity(intent);
 

@@ -159,10 +159,6 @@ public class GameActivity extends AppCompatActivity {
         //INSERIM A LA BBDD
         viewModel.insert(newGame);
 
-
-        Log.v("POTATO",viewModel.getAllGames().toString() );
-
-
     }
 
     @Override

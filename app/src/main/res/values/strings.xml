@@ -3,4 +3,11 @@
     <string name="nickname">Write here your nickname</string>
     <string name="start">START!</string>
     <string name="visita_ranking">Ranking</string>
+    <string name="seeAnswer">See answer</string>
+    <string name="checkLetter">Check letter</string>
+    <string name="checkWord">Check word</string>
+    <string name="hintLetter">Write some letter</string>
+    <string name="hintWord">Write the word!</string>
+    <string name="finishGame">Finish game</string>
+    <string name="solveWord">Solve word</string>
 </resources>

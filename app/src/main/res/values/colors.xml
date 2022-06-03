@@ -12,4 +12,6 @@
     <color name="checkButtons">#65873E</color>
     <color name="wordToGuess">#491B1B</color>
     <color name="nickName">#373333</color>
+    <color name="myTitle">#C31010</color>
+    <color name="btnTitle">#473838</color>
 </resources>

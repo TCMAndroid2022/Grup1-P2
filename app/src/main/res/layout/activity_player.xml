@@ -16,7 +16,6 @@
         android:gravity="center"
         android:inputType="textPersonName"
         android:padding="30dp"
-        android:text="Name"
         android:textColor="@color/white"
         android:textSize="34sp" />
 

@@ -1,17 +1,21 @@
 package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class RankingActivity extends AppCompatActivity {
+public class RankingActivity extends AppCompatActivity implements GameAdapter.OnItemClickListener{
 
     GameViewModel viewModel;
     GameAdapter gameAdapter;
@@ -19,9 +23,9 @@ public class RankingActivity extends AppCompatActivity {
     TextView playerId;
     TextView playerNick;
     TextView playerPoints;
-    TextView playerGames;
 
     RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +39,20 @@ public class RankingActivity extends AppCompatActivity {
         playerId = findViewById(R.id.player_id);
         playerNick = findViewById(R.id.player_nick);
         playerPoints = findViewById(R.id.player_points);
-        playerGames = findViewById(R.id.ranking_game);
 
         recyclerView = findViewById(R.id.ranking_view);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+/*
+        playerNick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent = new Intent(this, cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia.PlayerActivity.class);
 
+            }
+        });
+*/
 
         //crea instancia del ViewModel per accedir a les dades del llistat.
         //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
@@ -58,7 +69,7 @@ public class RankingActivity extends AppCompatActivity {
             }
         });
 
-        gameAdapter = new GameAdapter();
+        gameAdapter = new GameAdapter((GameAdapter.OnItemClickListener) this);
         recyclerView.setAdapter(gameAdapter);
     }
 
@@ -68,4 +79,12 @@ public class RankingActivity extends AppCompatActivity {
         finish();
         return true;
     }
+
+    @Override
+    public void onItemClick (String nick){
+        Intent intent = new Intent(this, cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia.PlayerActivity.class);
+        startActivity(intent);
+
+    }
+
 }

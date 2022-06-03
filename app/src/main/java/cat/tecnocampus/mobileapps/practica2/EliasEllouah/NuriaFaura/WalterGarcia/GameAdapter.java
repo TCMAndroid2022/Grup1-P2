@@ -1,8 +1,10 @@
 package cat.tecnocampus.mobileapps.practica2.EliasEllouah.NuriaFaura.WalterGarcia;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +16,10 @@ import java.util.List;
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
     private List<Game> data = Collections.emptyList();
+    OnItemClickListener listener;
 
-    public GameAdapter() {
+    public GameAdapter(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     public void setGames(List<Game> data) {
@@ -45,7 +49,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView id;
         public TextView nickname;
         public TextView points;
@@ -55,7 +59,19 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             id = itemView.findViewById(R.id.player_id);
             nickname = itemView.findViewById(R.id.player_nick);
             points = itemView.findViewById(R.id.player_points);
+            nickname.setOnClickListener(this);
+        }
 
+
+        @Override
+        public void onClick(View view) {
+            listener.onItemClick(data.get(getAdapterPosition()).getNickname());
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(String nick);
+    }
+
+
 }

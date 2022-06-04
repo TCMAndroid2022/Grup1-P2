@@ -19,4 +19,7 @@ public interface GameDao {
 
     @Query ("SELECT id, nickname, sum(points) as points, cont FROM Game GROUP BY nickname ORDER BY id asc")
     LiveData<List<Game>> getAllGamesByNick();
+
+    @Query("SELECT * FROM Game WHERE nickname LIKE ?")
+    LiveData<List<Game>> getNickGames();
 }

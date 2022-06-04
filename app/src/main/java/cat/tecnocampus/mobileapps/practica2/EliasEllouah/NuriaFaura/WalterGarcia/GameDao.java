@@ -17,7 +17,6 @@ public interface GameDao {
     @Insert
     void insertGame(Game game);
 
-    //@Query("SELECT id, nickname, sum(points) FROM Game GROUP BY nickname")
-    @Query ("SELECT id, nickname, sum(points), points, cont FROM Game GROUP BY nickname ORDER BY id asc")
+    @Query ("SELECT id, nickname, sum(points) as points, cont FROM Game GROUP BY nickname ORDER BY id asc")
     LiveData<List<Game>> getAllGamesByNick();
 }

@@ -55,7 +55,7 @@ public class GameActivity extends AppCompatActivity  {
         String text = getIntent().getStringExtra("sendWord");
         String nick = getIntent().getStringExtra("sendNickName");
 
-        nicktext.setText(nick);
+        nicktext.setText("Nickname: "+nick);
         letterSize = text.length();
         paraula = new String[text.length()];
         encerts = new String[text.length()];

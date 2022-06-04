@@ -20,12 +20,17 @@ public class GameActivity extends AppCompatActivity  {
     TextView textView;
     EditText editText;
     TextView nicktext;
+    TextView enteredWord;
+    TextView finalPoints;
+    TextView endGame;
+
     int letterSize;
     String replace="";
     String paraula[];
     String encerts[];
     String initial="";
     int puntuacio = 0;
+    int enteredLetters=0;
 
 
     GameViewModel viewModel;
@@ -42,18 +47,19 @@ public class GameActivity extends AppCompatActivity  {
         textView = findViewById(R.id.randomWord);
         editText = findViewById(R.id.lletra);
         nicktext = findViewById(R.id.textNick);
+        enteredWord = findViewById(R.id.et_writeWord);
+        endGame = findViewById(R.id.tv_gameFinished);
+        finalPoints = findViewById(R.id.tv_points);
 
 
         String text = getIntent().getStringExtra("sendWord");
         String nick = getIntent().getStringExtra("sendNickName");
 
         nicktext.setText(nick);
-
-
-
         letterSize = text.length();
         paraula = new String[text.length()];
         encerts = new String[text.length()];
+
         for (int i = 0; i< letterSize;i++) {
             encerts[i] = " _ ";
             paraula[i] = text.substring(i,i+1);
@@ -93,13 +99,15 @@ public class GameActivity extends AppCompatActivity  {
         else {
 
             for (int i = 0; i<letterSize; i++) {
-                System.out.println(paraula[i]);
+                System.out.print(paraula[i]);
             }
 
             for (int i = 0; i<letterSize;i++) {
                 System.out.println("abans de comparar lletra es "+letter+ " caixa es: "+paraula[i]);
                 if (paraula[i].equalsIgnoreCase(letter)) {
                     encerts[i] = letter;
+                    this.enteredLetters++;
+                    Log.v("Ha encertat!",this.enteredLetters+"");
                 }
 
                 else {
@@ -112,32 +120,56 @@ public class GameActivity extends AppCompatActivity  {
             textView.setText(replace.toUpperCase(Locale.ROOT));
             replace = "";
 
+            if (enteredLetters == letterSize){
+                finishGameClicked(view);
+            }
+
         }
 
     }
 
     public void finishGameClicked (View view){
+        String entered = enteredWord.getText().toString();
+        String paraulaFinal="";
 
-        //CALCULEM PUNTS
-        int enteredLetters = 0;
-        for(int i = 0; i < this.encerts.length; i++){
-            if (!this.encerts[i].equals(" - "))
-                enteredLetters++;
+
+        if(wordIsCorrect(paraula, entered) || enteredLetters == letterSize){
+
+            //CALCULEM PUNTUACIO
+            float resta = letterSize - enteredLetters;
+            double divisio = resta/(float)letterSize;
+            double mult = divisio*10;
+            this.puntuacio = (int)Math.round(mult);
+
+            //PRINT JOC ACABAT
+            endGame.setText("GAME FINISHED! You win, congrats!! Go check the ranking...");
+
+        } else{
+            this.puntuacio = 0;
+            //TPRINT JOC ACABAT
+            endGame.setText("GAME FINISHED! You lost, go check the ranking...");
         }
 
-        this.puntuacio = ((this.letterSize - enteredLetters)/this.letterSize)*10;
-
-
-        int points = puntuacio;
         String nick = nicktext.getText().toString();
 
+        //EL JOC HA ACABAT: PRINTEM LA PARAULA
+        for (int i = 0; i< letterSize;i++) {
+            paraulaFinal+=paraula[i];
+        }
+
+        textView.setText(paraulaFinal.toUpperCase());
+
+        //PRINTEM LA PUNTUACIÓ DE LA PARTIDA
+        finalPoints.setText("You have earned "+this.puntuacio+" POINTS");
 
         //OBJECTE GAME
-        Game newGame = new Game(nick, points);
-
+        Game newGame = new Game(nick, this.puntuacio);
 
         //INSERIM A LA BBDD
         viewModel.insert(newGame);
+
+
+
 
     }
 
@@ -155,6 +187,15 @@ public class GameActivity extends AppCompatActivity  {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean wordIsCorrect(String [] paraula, String entered){
+        String word = "";
+        for(int i=0;i< paraula.length;i++){
+            word += paraula[i];
+        }
+
+        return word.equalsIgnoreCase(entered);
     }
 
 }

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
@@ -71,6 +72,17 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
     public interface OnItemClickListener {
         void onItemClick(String nick);
+    }
+
+
+
+    public void arrangeData(){
+        Comparator<Game> compareById = (Game g1, Game g2) ->
+                g1.getNickname().compareTo(g2.getNickname());
+
+        Collections.sort(data, compareById);
+        System.out.println("MIRANDO NOTIFIY");
+        notifyDataSetChanged();
     }
 
 

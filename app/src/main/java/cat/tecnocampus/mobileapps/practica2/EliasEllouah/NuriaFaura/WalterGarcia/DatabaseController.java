@@ -12,14 +12,22 @@ public class DatabaseController {
     private GameDao gameDao;
     private LiveData<List<Game>> allGames;
 
+    private LiveData<List<Game>> allGamesByNick;
+
     public DatabaseController(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         gameDao = db.GameDao();
         allGames = gameDao.getAllGames();
+        allGamesByNick = gameDao.getAllGamesByNick();
     }
 
     public LiveData<List<Game>> fetchAll() {
         return allGames;
+    }
+
+
+    public LiveData<List<Game>> fetchAllByNick() {
+        return allGamesByNick;
     }
 
     public void setGame(Game game) {

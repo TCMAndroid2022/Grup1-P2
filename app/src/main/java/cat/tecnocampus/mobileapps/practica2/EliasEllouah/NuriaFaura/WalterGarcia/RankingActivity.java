@@ -60,7 +60,7 @@ public class RankingActivity extends AppCompatActivity implements GameAdapter.On
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         //Observe es una funció de LiveData, que ens permet detectar quan
         // les dades s'han modificat.
-        viewModel.getAllGames().observe(this, new Observer<List<Game>>() {
+        viewModel.getAllGamesByNick().observe(this, new Observer<List<Game>>() {
             @Override
             public void onChanged(List<Game> games) {
                 //onChanged s'executa quan el llistat es modifica a la bbdd.

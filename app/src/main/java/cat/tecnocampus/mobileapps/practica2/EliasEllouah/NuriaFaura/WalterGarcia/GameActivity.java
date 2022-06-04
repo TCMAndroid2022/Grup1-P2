@@ -51,11 +51,10 @@ public class GameActivity extends AppCompatActivity  {
         endGame = findViewById(R.id.tv_gameFinished);
         finalPoints = findViewById(R.id.tv_points);
 
-
         String text = getIntent().getStringExtra("sendWord");
         String nick = getIntent().getStringExtra("sendNickName");
 
-        nicktext.setText("Nickname: "+nick);
+        nicktext.setText(nick);
         letterSize = text.length();
         paraula = new String[text.length()];
         encerts = new String[text.length()];
@@ -74,7 +73,7 @@ public class GameActivity extends AppCompatActivity  {
         //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
 
-        createDummyDatabase();
+    //    createDummyDatabase();
     }
 
     private void createDummyDatabase(){
@@ -167,9 +166,6 @@ public class GameActivity extends AppCompatActivity  {
 
         //INSERIM A LA BBDD
         viewModel.insert(newGame);
-
-
-
 
     }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -18,6 +19,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
     private List<Game> data = Collections.emptyList();
     OnItemClickListener listener;
+    String nickname;
 
     public GameAdapter(OnItemClickListener listener) {
         this.listener = listener;
@@ -26,6 +28,16 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     public void setGames(List<Game> data) {
         this.data = data;
         notifyDataSetChanged();
+    }
+
+    public void setFilteredGames(List<Game> data){
+        List<Game> games = new ArrayList<>(data);
+        for(Game game: data){
+            if(!game.getNickname().equals(nickname)){
+                games.remove(game);
+            }
+        }
+        setGames(games);
     }
 
     @NonNull
@@ -74,7 +86,9 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
         void onItemClick(String nick);
     }
 
-
+    public void setNickname(String nick){
+        this.nickname =  nick;
+    }
 
     public void arrangeData(){
         Comparator<Game> compareById = (Game g1, Game g2) ->

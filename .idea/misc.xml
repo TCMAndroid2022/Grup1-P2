@@ -5,13 +5,16 @@
       <map>
         <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/font/almendra.xml" value="0.1" />
         <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/activity_game.xml" value="0.25" />
-        <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/activity_player.xml" value="0.22" />
+        <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/activity_player.xml" value="0.25" />
         <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/activity_ranking.xml" value="0.2" />
-        <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/item_player_ranking.xml" value="0.17708333333333334" />
-        <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/layout/item_ranking.xml" value="0.22" />
         <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/menu/menu_activity1.xml" value="0.33" />
         <entry key="..\:/Users/nuria/Documents/ANDROID/Grup1-P2/app/src/main/res/menu/menu_ranking.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/walte/AndroidStudioProjects/Grup1-P2/app/src/main/res/layout/activity_game.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/walte/AndroidStudioProjects/Grup1-P2/app/src/main/res/layout/activity_player.xml" value="0.10740740740740741" />
+        <entry key="..\:/Users/walte/AndroidStudioProjects/Grup1-P2/app/src/main/res/layout/activity_ranking.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/walte/AndroidStudioProjects/Grup1-P2/app/src/main/res/layout/item_player_ranking.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/walte/AndroidStudioProjects/Grup1-P2/app/src/main/res/layout/item_ranking.xml" value="0.20425724637681159" />
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.21880767379981886" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2646240234375" />
         <entry key="app/src/main/res/layout/game_activity.xml" value="0.10144927536231885" />

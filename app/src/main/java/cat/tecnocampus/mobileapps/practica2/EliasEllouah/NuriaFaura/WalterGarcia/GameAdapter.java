@@ -95,7 +95,6 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 g1.getNickname().compareTo(g2.getNickname());
 
         Collections.sort(data, compareById);
-        System.out.println("MIRANDO NOTIFIY");
         notifyDataSetChanged();
     }
 

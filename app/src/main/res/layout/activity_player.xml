@@ -35,6 +35,16 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/info_player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/ranking_nick"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/info_game_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

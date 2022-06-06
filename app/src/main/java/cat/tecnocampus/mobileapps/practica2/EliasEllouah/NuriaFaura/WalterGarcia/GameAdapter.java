@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
 
@@ -33,7 +34,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     public void setFilteredGames(List<Game> data){
         List<Game> games = new ArrayList<>(data);
         for(Game game: data){
-            if(!game.getNickname().equals(nickname)){
+            if(!game.getNickname().toLowerCase(Locale.ROOT).equals(nickname.toLowerCase(Locale.ROOT))){
                 games.remove(game);
             }
         }

@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     String url = "https://palabras-aleatorias-public-api.herokuapp.com/random";
     String url2 = "https://random-word-api.herokuapp.com/word";
     String random;
+    boolean gotWord = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         mp = MediaPlayer.create(this,R.raw.ambient_5);
         mp.seekTo(1);
         mp.setLooping(true);
-        //mp.start();
+        mp.start();
 
         editText = findViewById(R.id.nickname_txt);
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 //Aqui ens arriba la resposta de la request que estem fent
                 Log.v("TEST", response);
                 random = response;
-
+                gotWord = true;
             }
         }, new Response.ErrorListener() {
             @Override
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         random = random.replaceAll("\\W+","");
         String nickname = editText.getText().toString();
 
-        if (nickname.length()>=1){
+        if (nickname.length()>=1&&gotWord){
             Intent intent = new Intent(getApplicationContext(),GameActivity.class);
             intent.putExtra("sendNickName",nickname);
             System.out.println("Paraula que volem enviar: "+random);

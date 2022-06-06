@@ -16,14 +16,6 @@ public class DatabaseController {
 
     private LiveData<List<Game>> allNickGames;
 
-    public DatabaseController(Application application, String nickname) {
-        AppDatabase db = AppDatabase.getDatabase(application);
-        gameDao = db.GameDao();
-        allGames = gameDao.getAllGames();
-        allGamesByNick = gameDao.getAllGamesByNick();
-        allNickGames = gameDao.getNickGames(nickname);
-    }
-
     public DatabaseController(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         gameDao = db.GameDao();

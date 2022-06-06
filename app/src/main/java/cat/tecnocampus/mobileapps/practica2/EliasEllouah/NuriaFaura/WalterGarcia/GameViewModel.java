@@ -16,13 +16,6 @@ public class GameViewModel extends AndroidViewModel {
     private LiveData<List<Game>> allGames; //LiveData
     private LiveData<List<Game>> allGamesByNick;
     private LiveData<List<Game>> allNickGames;
-    public GameViewModel(@NonNull Application application, String nickname) {
-        super(application);
-        repository = new DatabaseController(application, nickname);
-        allGames = repository.fetchAll();//Agafem tot el que hi hagi a la taula de tasques
-        allGamesByNick = repository.fetchAllByNick();
-        allNickGames = repository.fetchAll();
-    }
 
     public GameViewModel(@NonNull Application application) {
         super(application);

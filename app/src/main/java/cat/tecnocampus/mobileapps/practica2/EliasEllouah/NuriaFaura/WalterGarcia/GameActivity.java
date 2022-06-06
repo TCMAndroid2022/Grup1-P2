@@ -72,21 +72,7 @@ public class GameActivity extends AppCompatActivity  {
         //crea instancia del ViewModel per accedir a les dades del llistat.
         //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
-
-    //    createDummyDatabase();
     }
-
-    private void createDummyDatabase(){
-        Game newGame = new Game("BBBBB",10);
-        viewModel.insert(newGame);
-
-        Game newGame2 = new Game("CCCCC",100);
-        viewModel.insert(newGame2);
-
-        Game newGame3 = new Game("DDDDD",30);
-        viewModel.insert(newGame);
-    }
-
 
     public void searchChar(View view) {
         String letter = editText.getText().toString();
@@ -162,7 +148,7 @@ public class GameActivity extends AppCompatActivity  {
         finalPoints.setText("You have earned "+this.puntuacio+" POINTS");
 
         //OBJECTE GAME
-        Game newGame = new Game(nick, this.puntuacio);
+        Game newGame = new Game(nick.toLowerCase(Locale.ROOT), this.puntuacio);
 
         //INSERIM A LA BBDD
         viewModel.insert(newGame);
